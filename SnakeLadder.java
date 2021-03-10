@@ -8,7 +8,8 @@
 
     public static int throwDie() 
     {
-	Random random=new Random();
+	diceRollCount++;
+        Random random=new Random();
         int value = random.nextInt(6)+1;
 	return value;
      }
