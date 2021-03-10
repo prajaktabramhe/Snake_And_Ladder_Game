@@ -23,24 +23,37 @@ import java.util.Random;
          System.out.println("Welcome to Snake and ladder game");
          System.out.println("Start position is: "  + startPosition);
          System.out.println("Winning position is: "  + winningPosition);
-        
-         int playValue=optionForPlay();
-         if(playValue==0) 
-         {
-            System.out.println("No play");
-            position = position + throwDie();
-         }
-         else if(playValue==1)
-         {
-            System.out.println("Got Ladder");
-            position = position + throwDie();
-         }
-         else if(playValue==2)
-         {
-            System.out.println("Snake Attack");
-            position = position + throwDie();
-         }
-         System.out.println("new position is : " +position);
+       while(position < winningPosition) 
+       {
+          int playValue = optionForPlay();
+          int diceRollValue = throwDie();
+	  System.out.println("~~~ Dice rolled value: "+diceRollValue);
 
+
+          if(playValue==0) 
+          {
+             System.out.println("No play");
+             position = position;
+          }
+          else if(playValue==1)
+          {
+             System.out.println("Got Ladder");
+             position = position + diceRollValue;
+             if(position > 100) {
+
+		//System.out.println("congratulations player reached to winning position");
+	     }
+          }
+          else if(playValue==2)
+          {
+             System.out.println("Snake Attack");
+             position = position - diceRollValue;
+             if(position < 0) 
+              {
+		position=0;
+               }
+          }
+          System.out.println("new position is : " +position);
+       }
      }
  }
